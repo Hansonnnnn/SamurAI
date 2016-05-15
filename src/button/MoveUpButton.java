@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+
 import element.Map;
 import element.Samurai;
+import panel.GamePanel;
 import system.Game;
 
 /*
@@ -14,20 +16,24 @@ import system.Game;
 
 @SuppressWarnings("serial")
 public class MoveUpButton extends JButton {
-	Samurai playerWhoIsFighting;
-	Map mapWhichIsBeingUsed;
 	
-	public MoveUpButton() {
+	Samurai player;
+	Map map;
+	GamePanel panel;
+	
+	public MoveUpButton(Game game, GamePanel panel) {
 		super("↑");
-		this.addActionListener(new MoveUpButtonListener());
+		player = game.getNowSamu();
+		map = game.getMap();
+		this.panel = panel;
+		this.addActionListener(new MoveUpListener());
 	}
 	
-	class MoveUpButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			Game gameIsOn = new Game();
-			playerWhoIsFighting = gameIsOn.getNowSamu();
-			mapWhichIsBeingUsed = gameIsOn.getMap();
-			playerWhoIsFighting.action(mapWhichIsBeingUsed, 7);
+	class MoveUpListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			player.action(map, 7);
+			panel.getScreen().repaint();
+			panel.getNowSamuraiInfo().repaint();
 		}
 	}
 	

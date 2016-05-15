@@ -27,7 +27,7 @@ public class MainPanel extends JPanel {
 	
 	public MainPanel() {
 		super();
-		this.setSize(1200, 1000);
+		this.setSize(1000, 750);
 		this.setLayout(null);
 		
 		start = new StartGameButton();
@@ -43,7 +43,8 @@ public class MainPanel extends JPanel {
 		this.add(sound);
 	}
 	
-	public void paint(Graphics g) {
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		try {
 			background = ImageIO.read(new File("主界面.jpg"));
 		} catch (Exception e) {

@@ -25,23 +25,23 @@ public class OccupyPanel extends JPanel{
 	OccupyRightButton right;
 	JLabel occupy;
 
-	public OccupyPanel(Game game) {
+	public OccupyPanel(Game game, GamePanel panel) {
 		super();
-		this.setBounds(0, 100, 250, 100);
+		this.setBounds(0, 125, 250, 125);
 		BorderLayout borderLayout = new BorderLayout();
 		this.setLayout(borderLayout);
 		this.setBackground(Color.DARK_GRAY);
 		
-		up = new OccupyUpButton();
+		up = new OccupyUpButton(game, panel);
 		this.add(up, BorderLayout.NORTH);
 		
-		down = new OccupyDownButton();
+		down = new OccupyDownButton(game, panel);
 		this.add(down, BorderLayout.SOUTH);
 		
-		left = new OccupyLeftButton();
+		left = new OccupyLeftButton(game, panel);
 		this.add(left, BorderLayout.WEST);
 		
-		right = new OccupyRightButton();
+		right = new OccupyRightButton(game, panel);
 		this.add(right, BorderLayout.EAST);
 		
 		occupy = new JLabel("占领", JLabel.CENTER);

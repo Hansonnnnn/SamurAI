@@ -16,19 +16,12 @@ public class Spearer extends Samurai {
 		}
 		//根据队伍设置武士ID
 		
-		this.setIfHiding(false);
 	}
 	
 	public void occupy(Map map, int direction) {
 		//占领,传入参数代表方向,1向左,2向右,3向上,4向下
 		
 		this.setPower(this.getPower() - 4);
-		
-		if(this.getIfHiding() == true) {
-			this.panish(map);
-			//隐身时不能占领,否则将被罚下
-			
-		}
 		
 		if(direction == 1) {
 			if(this.getLocationX() > 0) {
@@ -45,16 +38,16 @@ public class Spearer extends Samurai {
 			}
 			
 		} else if(direction == 2) {
-			if(this.getLocationX() < map.getMapSizeX() - 1) {
+			if(this.getLocationX() < map.getSizeX() - 1) {
 				this.occupyBlock(map, getLocationX() + 1, getLocationY());
 			}
-			if(this.getLocationX() < map.getMapSizeX() - 2) {
+			if(this.getLocationX() < map.getSizeX() - 2) {
 				this.occupyBlock(map, getLocationX() + 2, getLocationY());
 			}
-			if(this.getLocationX() < map.getMapSizeX() - 3) {
+			if(this.getLocationX() < map.getSizeX() - 3) {
 				this.occupyBlock(map, getLocationX() + 3, getLocationY());
 			}
-			if(this.getLocationX() < map.getMapSizeX() - 4) {
+			if(this.getLocationX() < map.getSizeX() - 4) {
 				this.occupyBlock(map, getLocationX() + 4, getLocationY());
 			}
 			
@@ -73,22 +66,19 @@ public class Spearer extends Samurai {
 			}
 			
 		} else if(direction == 4) {
-			if(this.getLocationY() < map.getMapSizeY() - 1) {
+			if(this.getLocationY() < map.getSizeY() - 1) {
 				this.occupyBlock(map, getLocationX(), getLocationY() + 1);
 			}
-			if(this.getLocationY() < map.getMapSizeY() - 2) {
+			if(this.getLocationY() < map.getSizeY() - 2) {
 				this.occupyBlock(map, getLocationX(), getLocationY() + 2);
 			}
-			if(this.getLocationY() < map.getMapSizeY() - 3) {
+			if(this.getLocationY() < map.getSizeY() - 3) {
 				this.occupyBlock(map, getLocationX(), getLocationY() + 3);
 			}
-			if(this.getLocationY() < map.getMapSizeY() - 4) {
+			if(this.getLocationY() < map.getSizeY() - 4) {
 				this.occupyBlock(map, getLocationX(), getLocationY() + 4);
 			}
 			
-		} else {
-			this.panish(map);
-			//行动指令不符合要求时罚下
 		}
 		
 	}

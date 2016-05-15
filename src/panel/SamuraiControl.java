@@ -5,8 +5,6 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import button.EndRoundButton;
-import button.HideButton;
-import button.ShowButton;
 import system.Game;
 
 /*
@@ -18,31 +16,22 @@ public class SamuraiControl extends JPanel {
 	
 	MovePanel move;
 	OccupyPanel occupy;
-	HideButton hide;
-	ShowButton show;
 	EndRoundButton endRound;
 	
-	public SamuraiControl(Game game) {
+	public SamuraiControl(Game game, GamePanel panel) {
 		super();
 		this.setName("GameControl");
 		this.setBounds(750, 450, 250, 300);
 		this.setLayout(null);
 		this.setBackground(Color.DARK_GRAY);
 		
-		move = new MovePanel(game);
+		move = new MovePanel(game, panel);
 		this.add(move);
 		
-		occupy = new OccupyPanel(game);
+		occupy = new OccupyPanel(game, panel);
 		this.add(occupy);
 		
-		hide = new HideButton(game);
-		this.add(hide);
-		
-		show = new ShowButton(game);
-		this.add(show);
-		
-		endRound = new EndRoundButton(game);
+		endRound = new EndRoundButton(game, panel);
 		this.add(endRound);
 	}
 }
-

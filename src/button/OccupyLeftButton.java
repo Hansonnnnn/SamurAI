@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 import element.Map;
 import element.Samurai;
+import panel.GamePanel;
 import system.Game;
 
 /*
@@ -15,20 +16,24 @@ import system.Game;
 
 @SuppressWarnings("serial")
 public class OccupyLeftButton extends JButton {
-	Samurai playerWhoIsFighting;
-	Map mapWhichIsBeingUsed;
 	
-	public OccupyLeftButton() {
+	Samurai player;
+	Map map;
+	GamePanel panel;
+	
+	public OccupyLeftButton(Game game, GamePanel panel) {
 		super("←");
-		this.addActionListener(new OccupyLeftButtonListener());
+		player = game.getNowSamu();
+		map = game.getMap();
+		this.panel = panel;
+		this.addActionListener(new OccupyLeftListener());
 	}
 	
-	class OccupyLeftButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			Game gameIsOn = new Game();
-			playerWhoIsFighting = gameIsOn.getNowSamu();
-			mapWhichIsBeingUsed = gameIsOn.getMap();
-			playerWhoIsFighting.action(mapWhichIsBeingUsed, 1);
+	class OccupyLeftListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			player.action(map, 1);
+			panel.getScreen().repaint();
+			panel.getNowSamuraiInfo().repaint();
 		}
 	}
 	

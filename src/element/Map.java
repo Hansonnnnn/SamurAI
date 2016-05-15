@@ -6,17 +6,17 @@ package element;
 
 public class Map {
 
-	private int mapSizeX = 15; //战场横向区块数为15
-	private int mapSizeY = 15; //战场纵向区块数为15
+	private int sizeX = 15; //战场横向区块数为15
+	private int sizeY = 15; //战场纵向区块数为15
 	private Block[][] battleField; //用区块的二维数组表示战场
 	
 	public Map() {
 
-		this.battleField = new Block[mapSizeY][mapSizeX];
+		this.battleField = new Block[sizeY][sizeX];
 		//战场地图,根据战场尺寸使用一个区块的二维数组来表示
 		
-		for(int tempInt1 = 0; tempInt1 < mapSizeY; tempInt1++) {
-			for(int tempInt2 = 0; tempInt2 < mapSizeX; tempInt2++) {
+		for(int tempInt1 = 0; tempInt1 < sizeY; tempInt1++) {
+			for(int tempInt2 = 0; tempInt2 < sizeX; tempInt2++) {
 				this.battleField[tempInt1][tempInt2] = new Block();
 			}
 		}
@@ -36,7 +36,7 @@ public class Map {
 			randomNum1 = (int)(Math.random() * 4);
 			
 			if(randomNum1 == 0) {
-				randomNum2 = (int)(Math.random() * (mapSizeX - 1));
+				randomNum2 = (int)(Math.random() * (sizeX - 1));
 				
 				if(this.battleField[0][randomNum2].getOccupyer() == 8) {
 					this.battleField[0][randomNum2].setOccupyer(samu.getID());
@@ -49,12 +49,12 @@ public class Map {
 				}
 				
 			} else if(randomNum1 == 1) {
-				randomNum2 = (int)(Math.random() * (mapSizeY - 1));
+				randomNum2 = (int)(Math.random() * (sizeY - 1));
 				
-				if(this.battleField[randomNum2][mapSizeX - 1].getOccupyer() == 8) {
-					this.battleField[randomNum2][mapSizeX - 1].setOccupyer(samu.getID());
-					this.battleField[randomNum2][mapSizeX - 1].setLocater(samu.getID());
-					samu.setBaseX(mapSizeX - 1);
+				if(this.battleField[randomNum2][sizeX - 1].getOccupyer() == 8) {
+					this.battleField[randomNum2][sizeX - 1].setOccupyer(samu.getID());
+					this.battleField[randomNum2][sizeX - 1].setLocater(samu.getID());
+					samu.setBaseX(sizeX - 1);
 					samu.setBaseY(randomNum2);
 					break;
 				} else {
@@ -62,20 +62,20 @@ public class Map {
 				}
 				
 			} else if(randomNum1 == 2) {
-				randomNum2 = 1 + (int)(Math.random() * (mapSizeX - 1));
+				randomNum2 = 1 + (int)(Math.random() * (sizeX - 1));
 				
-				if(this.battleField[mapSizeY - 1][randomNum2].getOccupyer() == 8) {
-					this.battleField[mapSizeY - 1][randomNum2].setOccupyer(samu.getID());
-					this.battleField[mapSizeY - 1][randomNum2].setLocater(samu.getID());
+				if(this.battleField[sizeY - 1][randomNum2].getOccupyer() == 8) {
+					this.battleField[sizeY - 1][randomNum2].setOccupyer(samu.getID());
+					this.battleField[sizeY - 1][randomNum2].setLocater(samu.getID());
 					samu.setBaseX(randomNum2);
-					samu.setBaseY(mapSizeY - 1);
+					samu.setBaseY(sizeY - 1);
 					break;
 				} else {
 					continue;
 				}
 				
 			} else if(randomNum1 == 3){
-				randomNum2 = 1 + (int)(Math.random() * (mapSizeY - 1));
+				randomNum2 = 1 + (int)(Math.random() * (sizeY - 1));
 				
 				if(this.battleField[randomNum2][0].getOccupyer() == 8) {
 					this.battleField[randomNum2][0].setOccupyer(samu.getID());
@@ -112,12 +112,12 @@ public class Map {
 		this.battleField[targetY][targetX].setOccupyer(occupyerID);
 	}
 	
-	public int getMapSizeX() {
-		return this.mapSizeX;
+	public int getSizeX() {
+		return this.sizeX;
 	}
 	
-	public int getMapSizeY() {
-		return this.mapSizeY;
+	public int getSizeY() {
+		return this.sizeY;
 	}
 
 }

@@ -15,12 +15,7 @@ public class Game {
 	public Game() {
 		//初始化游戏
 		
-		totalRounds = (int)(Math.random() * 1009);
-		totalRounds -= (this.totalRounds % 12);
-		while(totalRounds < 12) {
-			totalRounds = (int)(Math.random() * 1009);
-			totalRounds -= this.totalRounds % 12;
-		}
+		totalRounds = 504;
 		nowRound = 1;
 		//初始化总回合数和当前回合数
 		
@@ -43,6 +38,37 @@ public class Game {
 		map.setRandomBase(samu5);
 		//初始化双方武士的基地
 		
+		getNowSamu().setPower(6);
+		//初始化当前武士的体力为6
+		
+	}
+	
+	public void endGame() {
+		//结束游戏,计算分数,得出胜利队伍
+		
+		int team0points = samu0.getPoints() + samu1.getPoints() + samu2.getPoints();
+		int team1points = samu3.getPoints() + samu4.getPoints() + samu5.getPoints();
+		
+		if(team0points == team1points) {
+			//平局
+		} else if(team0points > team1points) {
+			//队伍0获胜
+		} else {
+			//队伍1获胜
+		}
+		
+	}
+	
+	public void nextRound() {
+		//结束回合后,改变当前回合数,重新设置当前行动的武士
+		//如果当前回合等于总回合数,则结束游戏
+		
+		if(nowRound == totalRounds) {
+			endGame();
+		} else {
+			nowRound++;
+			getNowSamu().setPower(6);
+		}
 	}
 	
 	public Samurai getNowSamu() {
@@ -73,13 +99,6 @@ public class Game {
 		//返回当前回合和总回合数信息
 		
 		String info = "回合:" + nowRound + "/" + totalRounds;
-		return info;
-	}
-	
-	public String getRecoveryInfo() {
-		//返回恢复周期
-		
-		String info = "恢复周期:" + recoveryTime;
 		return info;
 	}
 	

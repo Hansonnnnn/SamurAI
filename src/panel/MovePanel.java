@@ -25,17 +25,17 @@ public class MovePanel extends JPanel{
 	MoveRightButton right;
 	JLabel move;
 
-	public MovePanel(Game game) {
+	public MovePanel(Game game, GamePanel panel) {
 		super();
-		this.setBounds(0, 0, 250, 100);
+		this.setBounds(0, 0, 250, 125);
 		BorderLayout borderLayout = new BorderLayout();
 		this.setLayout(borderLayout);
 		this.setBackground(Color.DARK_GRAY);
 		
-		up = new MoveUpButton();
-		down = new MoveDownButton();
-		left = new MoveLeftButton();
-		right = new MoveRightButton();
+		up = new MoveUpButton(game, panel);
+		down = new MoveDownButton(game, panel);
+		left = new MoveLeftButton(game, panel);
+		right = new MoveRightButton(game, panel);
 		move = new JLabel("移动", JLabel.CENTER);
 		move.setForeground(Color.WHITE);
 		
@@ -45,4 +45,6 @@ public class MovePanel extends JPanel{
 		this.add(right, BorderLayout.EAST);
 		this.add(move, BorderLayout.CENTER);
 	}
+	
+	
 }

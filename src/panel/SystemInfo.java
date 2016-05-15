@@ -16,9 +16,9 @@ import system.Game;
 @SuppressWarnings("serial")
 public class SystemInfo extends JPanel{
 	
-	ExitButton2 exit;
-	SoundControlButton2 sound;
-	JLabel roundInfo;
+	private ExitButton2 exit;
+	private SoundControlButton2 sound;
+	private JLabel roundInfo;
 	
 	public SystemInfo(Game game) {
 		super();
@@ -26,7 +26,7 @@ public class SystemInfo extends JPanel{
 		this.setBounds(750, 0, 250, 150);
 		this.setLayout(null);
 		this.setBackground(Color.DARK_GRAY);
-		
+
 		sound = new SoundControlButton2();
 		this.add(sound);
 		
@@ -37,6 +37,30 @@ public class SystemInfo extends JPanel{
 		roundInfo.setBounds(0, 50, 250, 100);
 		roundInfo.setForeground(Color.WHITE);
 		this.add(roundInfo);
+	}
+
+	public ExitButton2 getExit() {
+		return exit;
+	}
+
+	public void setExit(ExitButton2 exit) {
+		this.exit = exit;
+	}
+
+	public SoundControlButton2 getSound() {
+		return sound;
+	}
+
+	public void setSound(SoundControlButton2 sound) {
+		this.sound = sound;
+	}
+
+	public JLabel getRoundInfo() {
+		return roundInfo;
+	}
+
+	public void setRoundInfo(JLabel roundInfo) {
+		this.roundInfo = roundInfo;
 	}
 }
 

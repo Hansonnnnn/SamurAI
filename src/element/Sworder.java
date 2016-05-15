@@ -16,19 +16,12 @@ public class Sworder extends Samurai {
 		}
 		//根据队伍设置武士ID
 		
-		this.setIfHiding(false);
 	}
 	
 	public void occupy(Map map, int direction) {
 		//占领,传入参数代表方向,1向左,2向右,3向上,4向下
 		
 		this.setPower(this.getPower() - 4);
-		
-		if(this.getIfHiding() == true) {
-			this.panish(map);
-			//隐身时不能占领,否则将被罚下
-			
-		}
 		
 		if(direction == 1) {
 			if(this.getLocationX() > 1) {
@@ -37,20 +30,20 @@ public class Sworder extends Samurai {
 			if(this.getLocationX() > 0) {
 				this.occupyBlock(map, this.getLocationX() - 1, this.getLocationY());
 			}
-			if(this.getLocationY() < map.getMapSizeY() - 2) {
+			if(this.getLocationY() < map.getSizeY() - 2) {
 				this.occupyBlock(map, this.getLocationX(), this.getLocationY() + 2);
 			}
-			if(this.getLocationY() < map.getMapSizeY() - 1) {
+			if(this.getLocationY() < map.getSizeY() - 1) {
 				this.occupyBlock(map, this.getLocationX(), this.getLocationY() + 1);
 				if(this.getLocationX() > 0) {
 					this.occupyBlock(map, this.getLocationX() - 1, this.getLocationY() + 1);
 				}
 			}
 		} else if(direction == 2) {
-			if(this.getLocationX() < map.getMapSizeX() - 2) {
+			if(this.getLocationX() < map.getSizeX() - 2) {
 				this.occupyBlock(map, this.getLocationX() + 2, this.getLocationY());
 			}
-			if(this.getLocationX() < map.getMapSizeX() - 1) {
+			if(this.getLocationX() < map.getSizeX() - 1) {
 				this.occupyBlock(map, this.getLocationX() + 1, this.getLocationY());
 			}
 			if(this.getLocationY() > 1) {
@@ -58,7 +51,7 @@ public class Sworder extends Samurai {
 			}
 			if(this.getLocationY() > 0) {
 				this.occupyBlock(map, this.getLocationX(), this.getLocationY() - 1);
-				if(this.getLocationX() < map.getMapSizeX() - 1) {
+				if(this.getLocationX() < map.getSizeX() - 1) {
 					this.occupyBlock(map, this.getLocationX() + 1, this.getLocationY() - 1);
 				}
 			}
@@ -79,24 +72,21 @@ public class Sworder extends Samurai {
 				}
 			}
 		} else if(direction == 4) {
-			if(this.getLocationX() < map.getMapSizeX() - 2) {
+			if(this.getLocationX() < map.getSizeX() - 2) {
 				this.occupyBlock(map, this.getLocationX() + 2, this.getLocationY());
 			}
-			if(this.getLocationX() < map.getMapSizeX() - 1) {
+			if(this.getLocationX() < map.getSizeX() - 1) {
 				this.occupyBlock(map, this.getLocationX() + 1, this.getLocationY());
 			}
-			if(this.getLocationY() < map.getMapSizeY() - 2) {
+			if(this.getLocationY() < map.getSizeY() - 2) {
 				this.occupyBlock(map, this.getLocationX(), this.getLocationY() + 2);
 			}
-			if(this.getLocationY() < map.getMapSizeY() - 1) {
+			if(this.getLocationY() < map.getSizeY() - 1) {
 				this.occupyBlock(map, this.getLocationX(), this.getLocationY() + 1);
-				if(this.getLocationX() < map.getMapSizeX() - 1) {
+				if(this.getLocationX() < map.getSizeX() - 1) {
 					this.occupyBlock(map, this.getLocationX() + 1, this.getLocationY() + 1);
 				}
 			}
-		} else {
-			this.panish(map);
-			//行动指令不符合要求时罚下
 		}
 		
 	}
